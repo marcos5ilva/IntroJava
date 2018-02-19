@@ -61,9 +61,10 @@ public class Assignment7B {
         int scorePlayer = 0;
         int scoreComp = 0;
         char result = 'd';
+        int resultDif = 0;
         Scanner scan = new Scanner(System.in);
 
-        while (playerChoice != 6 ) {
+        while (playerChoice != 6) {
             System.out.println("---------------------------------");
             System.out.println("     Rock, Paper, Scissors Game");
             System.out.println("---------------------------------");
@@ -79,15 +80,28 @@ public class Assignment7B {
 
 
             if (playerChoice == 0 || playerChoice == 1 || playerChoice == 2) {
-                runGame(playerChoice);
+                result = runGame(playerChoice);
 
                 if(result == 'p'){
-                    scorePlayer=scorePlayer+1;
+                    scorePlayer++;
                 }
                 if(result == 'c'){
-                    scoreComp=scoreComp+1;
+                    scoreComp++;
                 }
 
+                //Calculate the difference between results
+                resultDif = Math.abs(scorePlayer - scoreComp);
+                if(resultDif >=3) {
+                    if (scorePlayer > scoreComp) {
+                        System.out.println("FINAL SCORE:  Player ["+scorePlayer+"] vs Computer["+scoreComp+"]");
+                        System.out.println("You win!!!");
+                        System.exit(0);
+                    } else {
+                        System.out.println("FINAL SCORE:  Player ["+scorePlayer+"] vs Computer["+scoreComp+"]");
+                        System.out.println("The Computer win!!!");
+                        System.exit(0);
+                    }
+                }
 
             } else if (playerChoice == 6 ) {
                 System.out.println("Exiting the game.");
@@ -95,8 +109,8 @@ public class Assignment7B {
 
             } else {
                 System.out.println("You MUST enter a 0, 1, or 2.");
-                System.out.print("\033\143");
-                System.out.flush();
+                System.out.print("\033\143"); //Cleaning the screen
+                System.out.flush();  //Cleaning the screen
             }
         }
 
