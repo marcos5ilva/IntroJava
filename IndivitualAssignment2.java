@@ -4,7 +4,7 @@ public class IndivitualAssignment2 {
 
     public static int randomSecretNum(){
         //Generates a random number between 100 and 1000
-        //Returns the secret 3 digit number
+        //Returns the secret 3 digit number with no repeats
         return (int)(100 + (Math.random()* 900 +1)) ;
     }
 

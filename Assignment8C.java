@@ -8,7 +8,7 @@ public class Assignment8C {
             //appears on the array
 
             //Storing the list in a 100 sized array
-            int[] counts = new int[100];
+            int[] counts = new int[101];
 
             //Counting numbers occurrences
             for(int number : numbers){
@@ -17,8 +17,12 @@ public class Assignment8C {
 
             //Print results
             for(int i=0; i< counts.length; i++){
-                if(counts[i]>0) {
+                if(counts[i]>0 && counts[i] == 1) {
+
+                    System.out.println(i + " occurs " + counts[i] + " time");
+                } else if(counts[i]>0) {
                     System.out.println(i + " occurs " + counts[i] + " times");
+
                 }
             }
     }
@@ -38,7 +42,15 @@ public class Assignment8C {
         while(userNumb !=0){
             System.out.println("Enter next number: ");
             userNumb = scan.nextInt();
-            list.add(userNumb);
+
+            if(userNumb < 0 || userNumb>100)
+            {
+                System.out.printf("The numbers must be between 1 and 100:");
+            }
+            if(userNumb >= 0 && userNumb <=100){
+                list.add(userNumb);
+            }
+
         }
 
         //removing 0 from the list
