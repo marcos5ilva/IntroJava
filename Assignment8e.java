@@ -8,6 +8,7 @@ public class Assignment8e {
 
         List<String> shoppingList = new ArrayList<>();
         int userChoice=0;
+        String userChoiceStr;
         String listItem;
         Scanner scan = new Scanner(System.in);
 
@@ -23,62 +24,86 @@ public class Assignment8e {
             System.out.println("4) Output List");
             System.out.println("5) Clear List");
             System.out.println("6) Exit");
-            System.out.println("Enter your choice : ");
-            userChoice = scan.nextInt();
+            System.out.println("Enter your number choice from 1 to 6 : ");
 
-            switch (userChoice) {
-                case 1:
-                    System.out.println("Insert the item´s name :");
-                        listItem = scan.next();
-                        shoppingList.add(listItem) ;
-                    System.out.println("Press 6 to back to menu.");
-                    scan.nextInt();
+            //Receiving user option
+            userChoiceStr = scan.nextLine();
 
-                    break;
+            //Converting user option into int
+            userChoice = Integer.parseInt(userChoiceStr);
 
-                case 2:
-                    System.out.println("Which item do you want to change");
-                    String item = scan.next();
-                    int pos = shoppingList.indexOf(item);
-                    if(pos == -1){
-                        System.out.println("This item it's not in the list.");
-                    }
-                    shoppingList.remove(pos);
-                    System.out.println("Enter the new item");
-                    String change = scan.next();
-                    shoppingList.add(pos, change);
+                switch (userChoice) {
+                    //Inserting a new item
+                    case 1:
+                        System.out.println("Insert the item's name :");
+                        listItem = scan.nextLine();
+                        shoppingList.add(listItem);
+                        System.out.println("Press 6 to back to menu.");
+                        scan.nextLine();
 
-                    break;
+                        break;
 
-                case 3:
-                    System.out.println("which item do you want to delete");
-                    String delete = scan.next();
-                    int poss = shoppingList.indexOf(delete);
+                    //Modifying an item on the list
+                    case 2:
 
-                    if(poss == -1){
-                        System.out.println("This item it's not in the list.");
-                    } else {
-                        shoppingList.remove(poss);
-                    }
+                        //Printing the list of items
+                        System.out.println("Shopping list: " + shoppingList);
+                        System.out.println("Which item do you want to change");
+                        String item = scan.nextLine();
+                        int pos = shoppingList.indexOf(item);
 
-                    break;
+                        //Checking if the item is in the list
+                        if (pos == -1) {
+                            System.out.println("This item it's not in the list.");
+                        }
+                        shoppingList.remove(pos);
+                        System.out.println("Enter the new item");
+                        String change = scan.nextLine();
+                        shoppingList.add(pos, change);
 
-                case 4:
+                        break;
 
-                        System.out.println(shoppingList);
+                    //Deleting an item from the list
+                    case 3:
+                        //Printing the list of items
+                        System.out.println("Shopping list: " + shoppingList);
 
-                    break;
+                        //Requiring the item the user want to delete
+                        System.out.println("which item do you want to delete");
+                        String delete = scan.nextLine();
+                        int poss = shoppingList.indexOf(delete);
 
-                case 5:
+                        //Checking if the item is in the list
+                        if (poss == -1) {
+                            System.out.println("This item it's not in the list.");
+                        } else {
+                            shoppingList.remove(poss);
+                        }
+
+                        break;
+
+                    case 4:
+                        //Printing the list of items
+                        System.out.println("Shopping list: " + shoppingList);
+                        System.out.println("Press 6 to back to menu.");
+                        scan.nextLine();
+
+                        break;
+
+                    //Clearing the list of items
+                    case 5:
 
                         shoppingList.clear();
                         System.out.println("Your shopping cart is empty");
-                    break;
+                        System.out.println("Press 6 to back to menu.");
+                        scan.nextLine();
+                        break;
 
-                default:
-                    System.out.println("Please choose one of the menu options.");
-                    break;
-            }
+                    default:
+                        System.out.println("Please choose one of the menu options.");
+                        break;
+                }
+
 
 
 

@@ -5,6 +5,7 @@ public class IndivitualAssignment2 {
     public static int randomSecretNum(){
         //Generates a random number between 100 and 1000
         //Returns the secret 3 digit number with no repeats
+        String secretNum = Integer.toString((int) (100 + (Math.random()* 900 +1)));
         return (int)(100 + (Math.random()* 900 +1)) ;
     }
 
